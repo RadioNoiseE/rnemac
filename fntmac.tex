@@ -1,0 +1,199 @@
+%! func: `font-setup'
+%! meta: @{plainTeX} @{LuaTeX}
+
+\ifx\fntmac\fmtversion\endinput\else\let\fntmac=\fmtversion\fi
+
+\catcode`@=11
+
+\adjustspacing=2
+\protrudechars=2
+\def\sethzcode#1{%
+ \expandglyphsinfont#1 20 20 10}
+\def\setprotcode#1{%
+ \rpcode#1`\!=200
+ \rpcode#1`\,=700
+ \rpcode#1`\-=700
+ \rpcode#1`\.=700
+ \rpcode#1`\;=500
+ \rpcode#1`\:=500
+ \rpcode#1`\?=200
+ \lpcode#1`\`=700
+ \rpcode#1`\'=700
+ \lpcode#1 92=500  % ``
+ \rpcode#1 34=500  % ''
+ \rpcode#1 123=300 % --
+ \rpcode#1 124=200 % ---
+ \rpcode#1`\)=50
+ \rpcode#1`\A=50
+ \rpcode#1`\F=50
+ \rpcode#1`\K=50
+ \rpcode#1`\L=50
+ \rpcode#1`\T=50
+ \rpcode#1`\V=50
+ \rpcode#1`\W=50
+ \rpcode#1`\X=50
+ \rpcode#1`\Y=50
+ \rpcode#1`\k=50
+ \rpcode#1`\r=50
+ \rpcode#1`\t=50
+ \rpcode#1`\v=50
+ \rpcode#1`\w=50
+ \rpcode#1`\x=50
+ \rpcode#1`\y=50
+ \lpcode#1`\(=50
+ \lpcode#1`\A=50
+ \lpcode#1`\J=50
+ \lpcode#1`\T=50
+ \lpcode#1`\V=50
+ \lpcode#1`\W=50
+ \lpcode#1`\X=50
+ \lpcode#1`\Y=50
+ \lpcode#1`\v=50
+ \lpcode#1`\w=50
+ \lpcode#1`\x=50
+ \lpcode#1`\y=0}
+
+\expandafter\ifx\csname ccf\endcsname\relax\endinput\fi
+
+\def\hex@#1{\ifcase#1 0\or 1\or 2\or 3\or 4\or 5\or 6\or 7\or 8\or 9\or A\or B\or C\or D\or E\or F\fi}
+
+\font\textrm=ccr10 % roman
+\font\textit=ccti10 % italic
+\font\textsl=ccsl10 % slanted
+\font\textbf=cmbx10 % bold
+\font\textsc=cccsc10 % small caps
+\font\oldsty=ccmi10 % old style numbers
+\font\mathtext=ccr10
+ \font\mathsubtext=ccr7
+ \font\mathsubsubtext=ccr5
+\font\mathlet=eurm10 \fontdimen2\mathlet=0pt
+ \font\mathsublet=eurm7 \fontdimen2\mathsublet=0pt
+ \font\mathsubsublet=eurm5 \fontdimen2\mathsubsublet=0pt
+ \skewchar\mathlet='177 \skewchar\mathsublet='177 \skewchar\mathsubsublet='177
+\font\mathsym=cmsy10
+ \font\mathsubsym=cmsy7
+ \font\mathsubsubsym=cmsy5
+ \skewchar\mathsym='60 \skewchar\mathsubsym='60 \skewchar\mathsubsubsym='60
+\font\mathext=cmex10
+ \font\mathsubext=cmex10
+ \font\mathsubsubext=cmex10
+\font\mathscr=euxm10\fontdimen2\mathscr=0pt
+ \font\mathsubscr=euxm7 \fontdimen2\mathsubscr=0pt
+ \font\mathsubsubscr=euxm5 \fontdimen2\mathsubsubscr=0pt
+ \skewchar\mathscr='60 \skewchar\mathsubscr='60 \skewchar\mathsubsubscr='60
+\font\mathfr=eufm10\fontdimen2\mathfr=0pt
+ \font\mathsubfr=eufm7 \fontdimen2\mathsubfr=0pt
+ \font\mathsubsubfr=eufm5 \fontdimen2\mathsubsubfr=0pt
+\font\matheuex=euex10\fontdimen2\matheuex=0pt
+\font\eulerbf=eurb10 \fontdimen2\eulerbf=0pt % as needed
+\font\teneq=cmr10 % equal sign
+
+\def\rm{\fam\z@\textrm}
+\def\it{\fam\itfam\textit} \textfont\itfam=\textit % family 4
+\def\sl{\fam\slfam\textsl} \textfont\slfam=\textsl % family 5
+\def\bf{\fam\bffam\textbf} \textfont\bffam=\textbf % family 6
+
+\newfam\scrfam \edef\scrfam@{\hex@\scrfam}
+\def\scr{\fam\scrfam }
+\newfam\frfam \edef\frfam@{\hex@\frfam}
+\def\frak{\fam\frfam }
+\newfam\euexfam \edef\euexfam@{\hex@\euexfam}
+\newfam\eqfam \edef\eqfam@{\hex@\eqfam}
+
+\textfont0=\mathtext
+ \scriptfont0=\mathsubtext
+ \scriptscriptfont0=\mathsubsubtext
+\textfont1=\mathlet \let\tfont=\teni
+ \scriptfont1=\mathsublet
+ \scriptscriptfont1=\mathsubsublet
+\textfont2=\mathsym
+ \scriptfont2=\mathsubsym
+ \scriptscriptfont2=\mathsubsubsym
+\textfont3=\mathext
+ \scriptfont3=\mathsubext
+ \scriptscriptfont3=\mathsubsubext
+\textfont\scrfam=\mathscr
+ \scriptfont\scrfam=\mathsubscr
+ \scriptscriptfont\scrfam=\mathsubsubscr
+\textfont\frfam=\mathfr
+ \scriptfont\frfam=\mathsubfr
+ \scriptscriptfont\frfam=\mathsubsubfr
+\textfont\euexfam=\matheuex
+ \scriptfont\euexfam=\mathsubsym 
+ \scriptscriptfont\euexfam=\mathsubsubsym
+\textfont\eqfam=\teneq
+
+\mathcode`0="7130
+\mathcode`1="7131
+\mathcode`2="7132
+\mathcode`3="7133
+\mathcode`4="7134
+\mathcode`5="7135
+\mathcode`6="7136
+\mathcode`7="7137
+\mathcode`8="7138
+\mathcode`9="7139
+\mathcode`+="2\frfam@2B
+\mathcode`-="2\frfam@2D
+\mathcode`!="0\frfam@21
+\mathcode`(="4\frfam@28 \delcode`(="\frfam@28300
+\mathcode`)="5\frfam@29 \delcode`)="\frfam@29301
+\mathcode`[="4\frfam@5B \delcode`[="\frfam@5B302
+\mathcode`]="5\frfam@5D \delcode`]="\frfam@5D303
+\mathcode`=="3\frfam@3D
+\mathchardef\intop="1\euexfam@52
+\mathchardef\ointop="1\euexfam@48
+\mathchardef\coprod="1\euexfam@60
+\mathchardef\prod="1\euexfam@51
+\mathchardef\sum="1\euexfam@50
+\mathchardef\braceld="\euexfam@7A \mathchardef\bracerd="\euexfam@7B
+\mathchardef\bracelu="\euexfam@7C \mathchardef\braceru="\euexfam@7D
+\mathchardef\infty="0\euexfam@31
+\mathchardef\nearrow="3\euexfam@25
+\mathchardef\searrow="3\euexfam@26
+\mathchardef\nwarrow="3\euexfam@2D
+\mathchardef\swarrow="3\euexfam@2E
+\mathchardef\Leftrightarrow="3\euexfam@2C
+\mathchardef\Leftarrow="3\euexfam@28
+\mathchardef\Rightarrow="3\euexfam@29
+\mathchardef\leftrightarrow="3\euexfam@24 \mathcode`\^^W="3\euexfam@24
+\mathchardef\leftarrow="3\euexfam@20 \let\gets=\leftarrow \mathcode`\^^X="3\euexfam@20
+\mathchardef\rightarrow="3\euexfam@21 \let\to=\rightarrow \mathcode`\^^Y="3\euexfam@21
+\mathchardef\leftharpoonup="3\euexfam@18
+\mathchardef\leftharpoondown="3\euexfam@19
+\mathchardef\rightharpoonup="3\euexfam@1A
+\mathchardef\rightharpoondown="3\euexfam@1B
+\mathchardef\Relbar="3\eqfam@3D % the old = to match \Arrows
+\mathchardef\Gamma="7100
+\mathchardef\Delta="7101
+\mathchardef\Theta="7102
+\mathchardef\Lambda="7103
+\mathchardef\Xi="7104
+\mathchardef\Pi="7105
+\mathchardef\Sigma="7106
+\mathchardef\Upsilon="7107
+\mathchardef\Phi="7108
+\mathchardef\Psi="7109
+\mathchardef\Omega="710A
+\mathchardef\leq="3\scrfam@14
+\mathchardef\geq="3\scrfam@15
+\mathchardef\Re="0\scrfam@3C
+\mathchardef\Im="0\scrfam@3D
+\mathchardef\aleph="0\scrfam@40
+\def\uparrow{\delimiter"3\euexfam@22378 } \mathcode`\^^K="3\euexfam@22
+\def\downarrow{\delimiter"3\euexfam@23379 } \mathcode`\^^A="3\euexfam@23
+\def\updownarrow{\delimiter"3\euexfam@6C33F }
+\def\Uparrow{\delimiter"3\euexfam@2A37E }
+\def\Downarrow{\delimiter"3\euexfam@2B37F }
+\def\Updownarrow{\delimiter"3\euexfam@6D377 }
+\def\rbrace{\delimiter"5\scrfam@67\euexfam@09 } \let\}=\rbrace
+\def\lbrace{\delimiter"4\scrfam@66\euexfam@08 } \let\{=\lbrace
+\def\vert{\delimiter"\scrfam@6A30C }
+\def\backslash{\delimiter"\scrfam@6E30F }
+\let\varsigma=\sigma \let\varrho=\rho % euler doesn't have these
+
+\rm
+
+\catcode`@=12
+
+\endinput
